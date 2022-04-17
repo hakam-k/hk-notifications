@@ -32,7 +32,7 @@ export function dismissNotification(id?: string) {
   //   setTimeout(() => resolve({ data }), 500)
   // );
   console.log('dismissing notification: ',id);
-  return axios.get(`http://localhost:3001/app/notification/dismiss?id=${id}`,{
+  return axios.get(`https://hk1-notifications.herokuapp.com/app/notification/dismiss?id=${id}`,{
     headers:{
       'Access-Control-Allow-Origin':'allow'
     }
