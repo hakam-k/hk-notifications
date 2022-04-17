@@ -14,6 +14,9 @@ app.get('/home', (req, res) => {
    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
+app.get('/app/healthcheck', async(req, res) => {
+   res.send({status:'I am healthy!'});
+});
 app.get('/app/notifications', async(req, res) => {
    const {user_id}= req.query;
    console.log('user_id',user_id)
