@@ -65,7 +65,18 @@ export const notificationsSlice = createSlice({
       })
       .addCase(fetchNotificationsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.notifications = action.payload;
+        const cutomized = action.payload.map((notification:Notification)=>{
+          const has_sale = notification.text.search('sale');
+          const has_new = notification.text.search(/new/i);
+          const has_limited_edition = notification.text.search(/limited edition/i);
+          let text = notification.text;
+          has_sale > -1 && (text = text+'!');
+          has_new > -1 && (text = '~~'+text);
+          has_limited_edition > -1 && (text = text.replace(/limited edition/i,'LIMITED EDITION'));
+          console.log('text',text)
+          return {...notification,text}
+        })
+        state.notifications = cutomized;
       });
   },
 });
