@@ -19,7 +19,7 @@ export function fetchNotifications(id?: string) {
   // return new Promise<{ data: Array<Notification> }>((resolve) =>
   //   setTimeout(() => resolve({ data }), 500)
   // );
-  return axios.get(`http://localhost:3001/app/notifications?user_id='${id}'`,{
+  return axios.get(`https://hk1-notifications.herokuapp.com/app/notifications?user_id='${id}'`,{
     headers:{
       'Access-Control-Allow-Origin':'allow'
     }
